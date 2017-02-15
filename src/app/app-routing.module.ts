@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  {
-    path: '',
-    children: []
-  }
+  { path: '', redirectTo: 'login', pathMatch: 'full' }
+  // { path: 'profile', loadChildren: ''},
+  // { path: 'dashboard', loadChildren: ''},
+  // { path: 'life-insurance', loadChildren: ''}
 ];
 
 @NgModule({
@@ -13,4 +13,8 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: []
 })
-export class AppRoutingModule { }
+export class AppRoutingModule { 
+  constructor() {
+    console.log('AppRoutingModule....');
+  }
+}

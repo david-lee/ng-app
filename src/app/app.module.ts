@@ -2,10 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { AppRoutingModule } from './app-routing.module';
-//import { AlertModule } from 'ng2-bootstrap';
 
+// root app component
 import { AppComponent } from './app.component';
+// root routing module
+import { AppRoutingModule } from './app-routing.module';
+// feature modules
+import { LoginModule } from './login/login.module';
 
 @NgModule({
   declarations: [
@@ -15,10 +18,12 @@ import { AppComponent } from './app.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    //AlertModule.forRoot()
-    AppRoutingModule
+    AppRoutingModule,
+
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+}
