@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 // root routing module
 import { AppRoutingModule } from './app-routing.module';
 // feature modules
+import { CoreModule } from './core/core.module';
 import { LoginModule } from './login/login.module';
 
 @NgModule({
@@ -20,10 +21,11 @@ import { LoginModule } from './login/login.module';
     HttpModule,
     AppRoutingModule,
 
+    CoreModule,
     LoginModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: []
 })
 export class AppModule { 
 }
