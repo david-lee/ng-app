@@ -1,10 +1,7 @@
 import { Http, BaseRequestOptions, Response, ResponseOptions, RequestMethod } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 
-export let FakeBackendService = {
-    // use fake backend in place of Http service for backend-less development
-    provide: Http,
-    useFactory: (backend: MockBackend, options: BaseRequestOptions) => {
+export function fakebackend(backend: MockBackend, options: BaseRequestOptions) {
         // array in local storage for registered users
         let users: any[] = JSON.parse(localStorage.getItem('users')) || [];
 
@@ -121,6 +118,10 @@ export let FakeBackendService = {
         });
 
         return new Http(backend, options);
-    },
+}
+export let FakeBackendService = {
+    // use fake backend in place of Http service for backend-less development
+    provide: Http,
+    useFactory: fakebackend,
     deps: [MockBackend, BaseRequestOptions]
 };

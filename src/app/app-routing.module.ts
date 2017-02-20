@@ -8,6 +8,7 @@ import { NotFoundComponent } from './core/not-found.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule' },
   // otherwise show notfound component
   { path: '**', component: NotFoundComponent }
 ];
