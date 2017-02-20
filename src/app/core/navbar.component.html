@@ -1,40 +1,50 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" 
-        (click)="toggleCollapse()"
-        aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+    <a class="navbar-brand logo">
+      <img [src]="'assets/images/manulife_logo_en.png'" alt="Manulife Company Logo">
+    </a>
 
-      <a class="navbar-brand logo">
-        <img [src]="'assets/images/manulife_logo_en.png'" alt="Manulife Company Logo">
-      </a>
+    <div *ngIf="isLoggedIn">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" 
+          (click)="toggleCollapse()"
+          aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div [collapse]="isCollapsed" class="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li [class.active]="isActiveMenu('dashboard')" 
+            (mouseover)="setActive('dashboard')" 
+            (mouseleave)="setActive('')">
+            <a href="javascript:void(0)">Dashboard</a>
+          </li>
+          <li [class.active]="isActiveMenu('profile')" 
+            (mouseover)="setActive('profile')" 
+            (mouseleave)="setActive('')">
+            <a href="javascript:void(0)">Profile</a>
+          </li>
+          <li [class.active]="isActiveMenu('life')" 
+            (mouseover)="setActive('life')" 
+            (mouseleave)="setActive('')">
+            <a href="javascript:void(0)">Life Insurance</a>
+          </li>
+          <li [class.active]="isActiveMenu('logout')" 
+            (mouseover)="setActive('logout')" 
+            (mouseleave)="setActive('')">
+            <a href="javascript:void(0)">Logout</a>
+          </li>         
+        </ul>
+      </div><!-- /.navbar-collapse -->
+
+      <div></div>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div [collapse]="isCollapsed" class="navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li [class.active]="isActiveMenu('dashboard')" 
-          (mouseover)="setActive('dashboard')" 
-          (mouseleave)="setActive('')">
-          <a href="javascript:void(0)">Dashboard</a>
-        </li>
-        <li [class.active]="isActiveMenu('profile')" 
-          (mouseover)="setActive('profile')" 
-          (mouseleave)="setActive('')">
-          <a href="javascript:void(0)">Profile</a>
-        </li>
-        <li [class.active]="isActiveMenu('life')" 
-          (mouseover)="setActive('life')" 
-          (mouseleave)="setActive('')">
-          <a href="javascript:void(0)">Life Insurance</a>
-        </li>        
-      </ul>
-    </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

@@ -10,7 +10,7 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     LoginRoutingModule    
   ],
-  declarations: [LoginComponent]
+  declarations: [ LoginComponent ]
 })
 export class LoginModule { 
   constructor() {

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AuthenticationService } from './authentication.service';
+
 @Component({
   selector: 'ml-navbar',
   templateUrl: './navbar.component.html',
@@ -9,7 +11,12 @@ export class NavbarComponent implements OnInit {
   isCollapsed: boolean = true;
   activeMenu: string;
 
-  constructor() { }
+  get isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
+
+  constructor(private authService: AuthenticationService) {
+  }
 
   ngOnInit() {
   }

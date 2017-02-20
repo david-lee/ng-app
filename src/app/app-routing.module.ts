@@ -8,6 +8,7 @@ import { NotFoundComponent } from './core/not-found.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  // otherwise show notfound component
   { path: '**', component: NotFoundComponent }
 ];
 
