@@ -7,8 +7,6 @@ import { LocalStorageService } from './local-storage.service';
 
 @Injectable()
 export class AuthenticationService {
-  loggedInUser: any;
-
   constructor(private http: Http, private localStorage: LocalStorageService) {
   }
 
@@ -20,7 +18,6 @@ export class AuthenticationService {
         if (user && user.token) {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           this.localStorage.set('loggedInUser', user);
-          this.loggedInUser = user;        
         }
       });
   }
@@ -30,19 +27,20 @@ export class AuthenticationService {
     this.localStorage.remove('loggedInUser');
   }
 
-  // if user logged in and the token is still valid then return true
-  isLoggedIn(): boolean {
-    let token = (this.loggedInUser && this.loggedInUser.token) || '';
-
-    // TODO check token expiration
-    return !!token;
+  isTokenValid(): string {
+    let userItem = this.localStorage.get('loggedInUser') || {};
+    let token = userItem.token;
+    
+    // TODO add a logic to check token expiration
+    return !!token ? userItem.username : '';
   }
 
   getLoggedInUser(): any {
-    return this.loggedInUser || {};
+    return this.localStorage.get('loggedInUser') || {};
   }
 
   // TODO update token periodically
   refreshToken() {
   }
+
 }

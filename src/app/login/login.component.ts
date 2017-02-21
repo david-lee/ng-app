@@ -9,7 +9,6 @@ import { AuthenticationService } from '../core/authentication.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  projectName = 'app works!';
   loading: boolean = false;
   userModel = {
     username: '',
@@ -18,9 +17,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private authenticationService: AuthenticationService, 
     private router: Router,
-    config: ConfigService) 
-  {
-    this.projectName = config.projectName;
+    config: ConfigService) {
   }
 
   ngOnInit() {
