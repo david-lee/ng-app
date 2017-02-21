@@ -27,16 +27,20 @@ export class AuthenticationService {
     this.localStorage.remove('loggedInUser');
   }
 
-  // if user logged in and the token is still valid then return true
-  isLoggedIn(): boolean {
+  isTokenValid(): string {
     let userItem = this.localStorage.get('loggedInUser') || {};
     let token = userItem.token;
+    
+    // TODO add a logic to check token expiration
+    return !!token ? userItem.username : '';
+  }
 
-    // TODO check token expiration
-    return !!token;
+  getLoggedInUser(): any {
+    return this.localStorage.get('loggedInUser') || {};
   }
 
   // TODO update token periodically
   refreshToken() {
   }
+
 }

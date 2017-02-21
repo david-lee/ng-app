@@ -10,9 +10,13 @@ import { AuthenticationService } from './authentication.service';
 export class NavbarComponent implements OnInit {
   isCollapsed: boolean = true;
   activeMenu: string;
+  userName: string = '';
 
   get isLoggedIn(): boolean {
-    return this.authService.isLoggedIn();
+    // if user logged in and the token is valid it returns user name
+    this.userName = this.authService.isTokenValid();
+
+    return !!this.userName;
   }
 
   constructor(private authService: AuthenticationService) {
@@ -32,4 +36,5 @@ export class NavbarComponent implements OnInit {
   public isActiveMenu(activeLink: string): boolean {
     return this.activeMenu === activeLink;
   }
+
 }
