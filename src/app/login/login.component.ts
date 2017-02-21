@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfigService } from '../core/config.service';
 import { AuthenticationService } from '../core/authentication.service';
-
 @Component({
   selector: 'ml-login',
   templateUrl: './login.component.html',
@@ -14,16 +13,14 @@ export class LoginComponent implements OnInit {
     username: '',
     password: ''
   };
-
-  constructor(private authenticationService: AuthenticationService, 
+  constructor(
+    private authenticationService: AuthenticationService, 
     private router: Router,
     config: ConfigService) {
   }
-
   ngOnInit() {
     console.log("LoginComponent...");
   }
-
   login() {
     this.loading = true;
     this.authenticationService

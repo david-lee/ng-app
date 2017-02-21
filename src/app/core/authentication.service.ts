@@ -7,9 +7,11 @@ import { LocalStorageService } from './local-storage.service';
 
 @Injectable()
 export class AuthenticationService {
+  redirectUrl: string = '';
+
   constructor(private http: Http, private localStorage: LocalStorageService) {
   }
-
+  
   login(username: string, password: string) {
     return this.http.post('/api/authenticate', JSON.stringify({ username: username, password: password }))
       .map((response: Response) => {
@@ -21,12 +23,12 @@ export class AuthenticationService {
         }
       });
   }
-
+  
   logout() {
     // remove user from local storage to log user out
     this.localStorage.remove('loggedInUser');
   }
-
+  
   isTokenValid(): string {
     let userItem = this.localStorage.get('loggedInUser') || {};
     let token = userItem.token;
@@ -34,7 +36,7 @@ export class AuthenticationService {
     // TODO add a logic to check token expiration
     return !!token ? userItem.username : '';
   }
-
+  
   getLoggedInUser(): any {
     return this.localStorage.get('loggedInUser') || {};
   }

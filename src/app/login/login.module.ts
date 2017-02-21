@@ -7,8 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 @NgModule({
   imports: [
     SharedModule,
-    CommonModule,
-    LoginRoutingModule    
+    CommonModule   
   ],
   declarations: [ LoginComponent ]
 })
